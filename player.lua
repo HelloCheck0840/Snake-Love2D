@@ -1,4 +1,4 @@
-Player = {}
+local Player = {}
 Player.__index = Player
 
 function Player.new(size, pos, color)

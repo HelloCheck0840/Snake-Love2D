@@ -1,4 +1,4 @@
-Apple = {}
+local Apple = {}
 Apple.__index = Apple
 
 function Apple.new(size, color)

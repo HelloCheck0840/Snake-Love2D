@@ -1,5 +1,5 @@
-snake = require "player"
-apple = require "apple"
+local Snake = require "player"
+local Apple = require "apple"
 
 local file = io.open('highscore.txt', 'r')
 local highscore = file:read("n")
@@ -8,6 +8,9 @@ file:close()
 if highscore == nil then
     highscore = 0
 end
+
+local width, height, rows, columns, cell_size
+local snake, apple, score, isAlive
 
 function love.load()
     -- Setup
@@ -21,8 +24,8 @@ function love.load()
     score = 0
 
      -- Game things
-    snake = snake.new(40, {5, 6}, {150, 255, 150})
-    apple = apple.new(40, {255, 150, 150})
+    snake = Snake.new(40, {5, 6}, {150, 255, 150})
+    apple = Apple.new(40, {255, 150, 150})
     isAlive = true
 
     love.window.setTitle('Snake Love2d')
@@ -47,7 +50,6 @@ function love.mousepressed(x, y, button)
 end
 
 function collision(object)
-    local object = object
     for i = 2, #snake.pieces do
         if object[1] == snake.pieces[i][1] and object[2] == snake.pieces[i][2] then
             return true
